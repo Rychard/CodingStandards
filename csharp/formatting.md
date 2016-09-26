@@ -40,16 +40,16 @@ class Purchasing
 
 ## Indicating Scope
 
-Indicate scope when accessing all static and non-static class members. This provides a unambiguous indication of the 
-intended use of the member. Intellisense in Visual Studio is automatically invoked when using this practice, providing a 
-list of all available class members. This helps prevent unnecessary typing and reduces the risk of typographic errors.
+Developers should be able to infer the scope simply by following the naming convention.  In the event of a identifier 
+collision, consider choosing a different name for the conflicting identifier.  If the identifier cannot be changed, 
+it must be fully-qualified.  It is advisable to insert a comment explaining the reasoning behind the decision. 
 
 **Example:**
 
 ``` csharp
-String connectionString = DataAccess.DefaultConnectionString;
-Single amount = this.CurrentAmount;
-_discountedAmount = this.CalculateDiscountedAmount(amount, this.PurchaseMethod);        
+PurchaseMethod purchaseMethod = Order.GetPurchaseMethod(InvoiceID);
+Decimal discountedAmount = CalculateDiscountedAmount(_currentAmount, purchaseMethod);
+_discountedAmount = discountedAmount;
 ````
 
 **Guidelines:**
