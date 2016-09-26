@@ -2,17 +2,20 @@
 
 ## Capitalization
 
-Follow the standard Naming Guidelines set by the .NET framework team by using only three capitalization styles: Pascal, Camel, and Upper casing. 
+Follow the standard Naming Guidelines set by the .NET framework team by using only three capitalization styles: Pascal, Camel, and Upper casing.
+
+- **Pascal**: The first letter of an identifier is capitalized as well as the first letter of each concatenated word.  
+- **Camel**: The first letter of an identifier is lowercase but the first letter of each concatenated word is capitalized.
+- **Upper**: All letters of an identifier are capitalized.
 
 **Examples:**
 
 
 | Identifier Type | Capitalization Style | Example |
 | --------------- | -------------------- | ------- |
-| Abbreviations   | Upper | `ID`, `REF` |
-| Namespaces      | Pascal | `AppDomain`, `System.IO` |
+| Namespaces      | Pascal | `Microsoft.SqlServer`, `System.ComponentModel` |
 | Classes & Structures (`class`/`struct`) | Pascal | `AppView` |
-| Constants & Enumerations (`enum`) | Pascal | `TextStyles` |
+| Constants & Enumerations (`enum`) | Pascal | `TextStyles`, `PaymentMethod` (*See Note) |
 | Interfaces      | Pascal | `IEditableObject` | 
 | Enumeration values | Pascal | `TextStyles.BoldText` | 
 | Properties      | Pascal | `BackColor` |
@@ -22,12 +25,14 @@ Follow the standard Naming Guidelines set by the .NET framework team by using on
 | Method Parameters | Camel | `SetFilter(String filterValue)`
 | Local Variables | Camel | `recordCount` |
 
+**: Enumerations decorated with `[Flags]` should have plural identifiers, undecorated enumerations should use singular identifiers.asdf*
+
 Guidelines:
-- In Pascal casing, the first letter of an identifier is capitalized as well as the first letter of each concatenated word.  
-- In Camel casing, the first letter of an identifier is lowercase but the first letter of each concatenated word is capitalized. 
-- Upper casing is used only for two-letter abbreviations, such as `UI`.
-  - As an exception to this, `ID` should also use Upper.
-  - Note that three-letter abbreviations (ex. `URL`, `WPF`, `GUI`) should *not* use Upper.
+
+- Upper casing is used only for two-letter acronyms, such as `UI`.
+  - Note that `Id` is an abbreviation, and should follow Pascal casing. 
+  - Note that three-letter acronyms (ex. `URL`, `WPF`, `GUI`) should *not* use Upper (Use `Url`, `Wpf`, and `Gui`, respectively)
+- Enumerations decorated with `[Flags]` should have plural identifiers, undecorated enumerations should use singular identifiers. 
 - The Resharper plugin for Visual Studio can be configured to enforce these naming conventions.
 
 
