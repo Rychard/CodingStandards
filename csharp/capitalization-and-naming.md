@@ -36,3 +36,13 @@ Guidelines:
 Follow the standard set by the .NET framework team when it comes to naming. The Programming section of this document provides 
 naming templates for each construct within the C# language. These templates can be used in conjunction with the tables provided 
 in the appendix of this standard to yield meaningful names in most scenarios.
+
+
+## Indicating Scope
+
+Developers should be able to infer the scope simply by following the naming conventions above.  In the event of an identifier 
+collision, consider choosing a different name for the conflicting identifier.  If the identifier cannot be changed, it must 
+be fully-qualified.  It is advisable to insert a comment explaining the reasoning behind the decision. 
+
+**Guidelines:**
+- Omit the `this` keyword *unless* it is necessary to resolve ambiguity.

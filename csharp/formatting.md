@@ -38,23 +38,6 @@ class Purchasing
   - Many of these files are generated with T4 Text Templates, which should be modified instead.
 
 
-## Indicating Scope
-
-Developers should be able to infer the scope simply by following the naming convention.  In the event of a identifier 
-collision, consider choosing a different name for the conflicting identifier.  If the identifier cannot be changed, 
-it must be fully-qualified.  It is advisable to insert a comment explaining the reasoning behind the decision. 
-
-**Example:**
-
-``` csharp
-PurchaseMethod purchaseMethod = Order.GetPurchaseMethod(InvoiceID);
-Decimal discountedAmount = CalculateDiscountedAmount(_currentAmount, purchaseMethod);
-_discountedAmount = discountedAmount;
-````
-
-**Guidelines:**
-- Omit the `this` keyword *unless* it is necessary to resolve ambiguity.
-
 ## Indentation & Braces
 
 Statements should be indented (using 4 spaces, which is the default setting in Visual Studio) into blocks that show 
