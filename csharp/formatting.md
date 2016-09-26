@@ -34,7 +34,7 @@ class Purchasing
 **Guidelines:**
 - Be consistent about the layout of all classes within each project.
 - Omit regions if their associated class elements are not needed.
-- The `Designer Generated Code` region created by Visual Studio’s Visual Designer should *never* be modified by hand. 
+- The `Designer Generated Code` region created by Visual Studio's Visual Designer should *never* be modified by hand. 
   - Many of these files are generated with T4 Text Templates, which should be modified instead.
 
 
@@ -121,11 +121,11 @@ debugging and code reviews. The indentation example above shows an example of th
 
 Under *no* circumstances should a single statement wrap across multiple lines.
 
-Individual lines of code should (but are not required to) fit within visible area of the screen using the default 
-configuration and layout of Visual Studio.  Instead, long statements should be broken into multiple statements.
-This improves readability and minimizes the chance that something will be overlooked.
+Individual lines of code should (but are not required to) fit within the visible area of the screen using the 
+default configuration and layout of Visual Studio.  Instead, long statements should be broken into multiple 
+statements.  This improves readability and minimizes the chance that something will be overlooked.
 
-Comments are not subject to this rule, and can be span multiple lines.  Care should be taken to ensure 
+Comments are not subject to this rule, and can span multiple lines.  Care should be taken to ensure 
 readability and proper representation of the scope of the information in the broken lines.
 
 **Example:**
@@ -133,7 +133,7 @@ readability and proper representation of the scope of the information in the bro
 ``` csharp
 String Win32FunctionWrapper(Int32 arg1, String arg2, Boolean arg3)
 {
-    // Perform a PInvoke call to a win32 function, providing default values for obscure parameters,
+    // Perform a PInvoke call to a win32 function, providing default values for obscure parameters
     // to hide the complexity from the caller
     if(Win32.InternalSystemCall(null, arg1, arg2, arg3, null))
     {

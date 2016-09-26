@@ -142,8 +142,8 @@ Methods should be named using the following format: Verb + Adjective(s) + Noun +
 **Guidelines:**
 - Parameters should be grouped by their mutability (from least to most mutable) as shown in the example above.
 - If at all possible, avoid exiting methods from their middles.  A well written method should only exit from the same general point: its end.  
-- Avoid large methods. As a method’s body approaches 20 to 30 lines of code, look for blocks that could be split into their own methods and possibly shared by other methods.
-- If you find yourself using the same block of code more than once, it’s a good candidate for a separate method.
+- Avoid large methods. As a method's body approaches 20 to 30 lines of code, look for blocks that could be split into their own methods and possibly shared by other methods.
+- If you find yourself using the same block of code more than once, it's a good candidate for a separate method.
 - Group like methods within a class together into a region and order them by frequency of use (i.e. more frequently called methods should be near the top of their regions.
 
 
@@ -174,7 +174,7 @@ Use exceptions *only* for exceptional cases, do *not* rely on them for routine p
     - **Example:** `Quantity`, a `virtual` read/write property, is overridden by a derived class. In the derived class, the property is read-only. If the property is set, a `NotSupportedException` is thrown. 
   - `NotImplementedException`: Used when a method is not implemented for the current class. 
     - **Example:** A interface method is stubbed in and not yet implemented. This method should throw a `NotImplementedException`.
-- Derive your own exception classes for a programmatic scenarios. 
+- Derive your own exception classes for programmatic scenarios. 
   - All new derived exceptions should be based upon the core `Exception` class.
   - **Example:** `DeletedByAnotherUserException : Exception`. Thrown to indicate a record being modified has been deleted by another user.
 - Rethrow caught exceptions correctly.  
