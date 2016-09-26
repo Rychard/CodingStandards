@@ -3,7 +3,7 @@
 ## Intellisense Comments
 
 Use triple slash `///` comments for documenting the public interface of each class. This will allow Visual Studio to pick 
-up the method’s information for Intellisense. It is strongly suggested to add these types of comments before each 
+up the method's information for Intellisense. It is strongly suggested to add these types of comments before each 
 `public`, `internal`, and `protected` class member, but it is up to the individual developer to determine whether 
 to include these comments for `private` members.  There exists a free plugin for Visual Studio by the name of 
 [GhostDoc](http://submain.com/products/ghostdoc.aspx) which facilitate the creation of these types of comments.
@@ -89,10 +89,10 @@ by a single space.
 **Example:**
 ```csharp 
 // Compute total price, including any applicable taxes.
-Single stateSalesTax = this.CalculateStateSalesTax(amount, Customer.State);
-Single citySalesTax = this.CalculateCitySalesTax(amount, Customer.City);
-Single localSalesTax = this.CalculateLocalSalesTax(amount, Customer.Zipcode);
-Single totalPrice = amount + stateSalesTax + citySalesTax + localSalesTax;
+Decimal stateSalesTax = this.CalculateStateSalesTax(amount, Customer.State);
+Decimal citySalesTax = this.CalculateCitySalesTax(amount, Customer.City);
+Decimal localSalesTax = this.CalculateLocalSalesTax(amount, Customer.ZipCode);
+Decimal totalPrice = amount + stateSalesTax + citySalesTax + localSalesTax;
 Console.WriteLine("Total Price: {0}", totalPrice);
 ```
 
