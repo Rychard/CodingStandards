@@ -9,17 +9,17 @@ Follow the standard Naming Guidelines set by the .NET framework team by using on
 
 | Identifier Type | Capitalization Style | Example |
 | --------------- | -------------------- | ------- |
-| Abbreviations | Upper | `ID`, `REF` |
-| Namespaces | Pascal | `AppDomain`, `System.IO` |
-| Classes & Structures (`struct`) | Pascal | `AppView` |
+| Abbreviations   | Upper | `ID`, `REF` |
+| Namespaces      | Pascal | `AppDomain`, `System.IO` |
+| Classes & Structures (`class`/`struct`) | Pascal | `AppView` |
 | Constants & Enumerations (`enum`) | Pascal | `TextStyles` |
-| Interfaces | Pascal | `IEditableObject` | 
+| Interfaces      | Pascal | `IEditableObject` | 
 | Enumeration values | Pascal | `TextStyles.BoldText` | 
-| Properties | Pascal | `BackColor` |
+| Properties      | Pascal | `BackColor` |
 | Variables & Attributes (`public`) | Pascal | `WindowSize` |
-| Variables & Attributes (not `public`) | Camel with `_` prefix | `_windowWidth`, `_windowHeight` |
-| Methods | Pascal (`public`, `private`, `protected`) | `ToString()` |
-| Methods | Camel (parameters) | `SetFilter(string filterValue)`
+| Variables & Attributes (`private`) | Camel with `_` prefix | `_windowWidth`, `_windowHeight` |
+| Methods         | Pascal (`public`, `private`, `protected`) | `ToString()` |
+| Method Parameters | Camel | `SetFilter(String filterValue)`
 | Local Variables | Camel | `recordCount` |
 
 Guidelines:
@@ -35,4 +35,4 @@ Guidelines:
 
 Follow the standard set by the .NET framework team when it comes to naming. The Programming section of this document provides 
 naming templates for each construct within the C# language. These templates can be used in conjunction with the tables provided 
-in `Appendix A. Naming Parts & Pairs` to yield meaningful names in most scenarios.
+in the appendix of this standard to yield meaningful names in most scenarios.

@@ -8,7 +8,7 @@ The following guidelines are applicable to all aspects of C# development:
 - Classes should be small and cohesive.  Avoid large/monolithic classes. 
 - Iteration over collections should use the `while` and `foreach` constructs.
 - Refrain from using "magic" values in code (i.e. hard-coded strings and numbers)
-  - When *necessary*, define these values as either `const`, `static readonly`, `enum`, or read the values from an external resource.
+  - When *necessary*, define these values as either `const`, `static readonly`, `enum`, or by reading in the values from an external resource.
 
 ## Organization
 
@@ -30,8 +30,8 @@ The following guidelines are applicable to all aspects of C# development:
 
 ## Performance 
 
-- Do not use the `String` concatenation operator (`+=`).
-  - Instead, create a `StringBuilder` and use it's `Append()`, `AppendFormat()`, and `ToString()` methods, as they are vastly more efficient.
+- Be aware of the performance implications of string concatenation (`+=`).
+  - In most cases, a `StringBuilder` is preferred; the `Append()`, `AppendFormat()`, and `ToString()` methods are usually more efficient.
 - If a class implements `IDisposable`, ensure that it is wrapped within a `using` block.
   - If this is unavoidable, ensure that the `Dispose()` method is called before the reference to the object falls out of scope.
   - When calling `Dispose()` manually, wrap the usage in `try`/`catch`/`finally`, and call `Dispose()` within the `finally` block.

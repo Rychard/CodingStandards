@@ -10,3 +10,4 @@ It includes general coding guidelines as well as discussions on naming, formatti
 5. [Capitalization & Naming](./capitalization-and-naming.md)
 6. [Programming](./programming.md)
 7. [References](./references.md)
+8. [Appendix](./appendix.md)

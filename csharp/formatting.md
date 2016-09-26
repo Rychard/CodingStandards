@@ -32,7 +32,7 @@ class Purchasing
 ```
 
 **Guidelines:**
-- Be consistent about the layout of all classes within the same application.
+- Be consistent about the layout of all classes within each project.
 - Omit regions if their associated class elements are not needed.
 - The `Designer Generated Code` region created by Visual Studio’s Visual Designer should *never* be modified by hand. 
   - Many of these files are generated with T4 Text Templates, which should be modified instead.
@@ -40,7 +40,7 @@ class Purchasing
 
 ## Indicating Scope
 
-Indicate scope when accessing all static and non-static class members. This provides a crystal clear indication of the 
+Indicate scope when accessing all static and non-static class members. This provides a unambiguous indication of the 
 intended use of the member. Intellisense in Visual Studio is automatically invoked when using this practice, providing a 
 list of all available class members. This helps prevent unnecessary typing and reduces the risk of typographic errors.
 
@@ -49,7 +49,7 @@ list of all available class members. This helps prevent unnecessary typing and r
 ``` csharp
 String connectionString = DataAccess.DefaultConnectionString;
 Single amount = this.CurrentAmount;
-this.discountedAmount = this.CalculateDiscountedAmount(amount, this.PurchaseMethod);        
+_discountedAmount = this.CalculateDiscountedAmount(amount, this.PurchaseMethod);        
 ````
 
 **Guidelines:**
@@ -61,6 +61,8 @@ Statements should be indented (using 4 spaces, which is the default setting in V
 relative scope of execution.  Braces should be placed directly below and aligned with the statement that begins a 
 new scope of execution. Visual Studio includes a keyboard short-cut that will automatically apply this format to 
 a selected block of code.
+
+> For further reading, refer to [Allman Style](https://en.wikipedia.org/wiki/Indent_style#Allman_style).
 
 **Example:**
 
@@ -120,7 +122,7 @@ debugging and code reviews. The indentation example above shows an example of th
 Under *no* circumstances should a single statement wrap across multiple lines.
 
 Individual lines of code should (but are not required to) fit within visible area of the screen using the default 
-configuration and layout of Visual Studio.  Instead, long statements should be brokwn into multiple statements.
+configuration and layout of Visual Studio.  Instead, long statements should be broken into multiple statements.
 This improves readability and minimizes the chance that something will be overlooked.
 
 Comments are not subject to this rule, and can be span multiple lines.  Care should be taken to ensure 
@@ -147,51 +149,3 @@ String Win32FunctionWrapper(Int32 arg1, String arg2, Boolean arg3)
 **Guidelines:**
 - When breaking comments across multiple lines, match the indentation level of the code that is being commented upon.
 - Consider embedding large string constants in resources and retrieving them dynamically using the `ResourceManager` class.
-
-
-# Appendix
-
-## Common Adjective Pairs
-- `Old` / `New`
-- `Source` / `Destination`
-- `Source` / `Target`
-- `First` / `Next`
-- `Current` / `Previous` / `Last`
-- `Min` / `Max`
-
-## Common Property
-- `Allow`
-- `Can`
-- `Contains`
-- `Has`
-- `Is`
-- `Use`
-
-## Common Verb Pairs
-- `Add` / `Remove`
-- `Insert` / `Delete`
-- `Increment` / `Decrement`
-- `Lock` / `Unlock`
-- `Begin` / `End`
-- `Load` / `Save`
-- `Open`/ `Close`
-- `Create` / `Destroy`
-- `Acquire` / `Release`
-- `Up` / `Down`
-- `Show` / `Hide`
-- `Start` / `Stop`
-- `To` / `From` (*Convert* implied)
-
-## Common Qualifier Suffixes
-- `...Avg`
-- `...Count`
-- `...Entry`
-- `...Index`
-- `...Limit`
-- `...Ref`
-- `...Sum`
-- `...Total`
-
-**Note:** Avoid using `Num` because of semantics; use `Index` or `Count` instead.  Additionally, refrain from using 
-`Temp` to indicate *temporary* variables; take the time to describe what the object really is (e.g. use `SwapValue` 
-instead of `TempValue`)

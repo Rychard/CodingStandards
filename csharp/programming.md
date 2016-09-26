@@ -128,7 +128,7 @@ public Decimal TotalPrice
 ```
 	
 **Guidelines:**
-- Use the common prefixes for inspection properties (properties that return query information about an object). See Appendix A. Naming Parts & Pairs for common prefixes.
+- Use the common prefixes for inspection properties (properties that return query information about an object). Refer to the appendix for a list of common names and prefixes.
 - When there is a property setter that sets another property, use the property setter for the other property.  The other property setter could run its own set of code that is required to propagate the changed value.  
 
 
@@ -137,7 +137,7 @@ public Decimal TotalPrice
 Methods should be named using the following format: Verb + Adjective(s) + Noun + Qualifier(s)
 
 **Example:**
-- `private IEnumerable<Can> FindRedCansByPrice(Single price, ref int32 canListToPopulate)`
+- `private IEnumerable<Can> FindRedCansByPrice(Single price, ref Int32 canListToPopulate)`
 
 **Guidelines:**
 - Parameters should be grouped by their mutability (from least to most mutable) as shown in the example above.

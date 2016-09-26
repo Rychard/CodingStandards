@@ -16,7 +16,7 @@ to component libraries. web services, web sites, and rich client applications.
 ## Document Conventions
 
 Blocks of example code will use code-fencing, and should apply syntax-highlighting similar to how it appears within Visual Studio.
-Code or syntax presented in-line will use backticks (`` ` ``).  Syntax highlighting is not applied to inline code.
+Code or syntax presented in-line will use backticks (`` ` ``).  Note that syntax highlighting is not applied to inline code.
 
 ## Feedback
 
