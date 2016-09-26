@@ -25,7 +25,7 @@ The following guidelines are applicable to all aspects of C# development:
 - Indicate incomplete/missing code using `// TODO:` comments.
   - If a method has been written with no body (a method 'stub'), it's body should contain `throw new NotImplementedException();`
   - The [Resharper](https://www.jetbrains.com/resharper/) plugin will recognize both of the above scenarios as incomplete code.  
-    - If you have Resharper, this functionality is found here: `[Resharper] > [Tools] > [To-Do Items]`
+    - If you have Resharper, this functionality is found here: <kbd>Resharper</kbd> &raquo; <kbd>Tools</kbd> &raquo; <kbd>To-do Explorer</kbd>
 
 
 ## Performance 

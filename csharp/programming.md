@@ -24,8 +24,7 @@ base class whenever possible.
 - `CustomerCollection : CollectionBase`
 
 **Guidelines:**
-- Use Pascal casing when naming classes and structures.
-- Classes and structures should be broken up distinct `#regions` as previously described in the class layout guidelines. 
+- Use Pascal casing when naming classes and structures. 
 - Default values for fields should be assigned on the line where the field is declared. These values are assigned at runtime just before the constructor is called. This keeps code for default values in one place, especially when a class contains multiple constructors.
 
 
@@ -95,13 +94,13 @@ Variables, fields, and parameters should be declared using the following templat
 
 **Examples:** 
 - `Int32 lowestCommonDenominator = 10;`
-- `Single firstRedBallPrice = 25.0f;`
+- `Decimal firstRedBallPrice = 25.0m;`
 
 **Guidelines:**
 - Use Camel casing when naming variables, fields, and parameters.
 - Define variables as close as possible to the first line of code where they are used.
-- Declare each variable and field on a separate line. This allows the use of End-Of-Line comments for documenting their purpose.
-- Assign initial values when they differ from the type’s default value
+- Declare each variable and field on a separate line.
+- Assign initial values when they differ from the type's default value
 - Avoid meaningless names like i, j, k, and temp.  Take the time to describe what the object really is (e.g. use index instead of i; use swapInt instead of tempInt).
 - Use a positive connotation for boolean variable names (e.g. isOpen as opposed to notOpen).
 
@@ -117,7 +116,7 @@ public Decimal TotalPrice
     get { return _totalPrice; }
     set
     {
-        // Set value and fire changed event if new value is different
+        // Set value and fire changed event only if the new value is different
         if(!Object.Equals(value, _totalPrice))
         {
             _totalPrice = value;
@@ -137,13 +136,13 @@ public Decimal TotalPrice
 Methods should be named using the following format: Verb + Adjective(s) + Noun + Qualifier(s)
 
 **Example:**
-- `private IEnumerable<Can> FindRedCansByPrice(Single price, ref Int32 canListToPopulate)`
+- `private IEnumerable<Can> FindRedCansByPrice(Decimal price, ref Int32 canListToPopulate)`
 
 **Guidelines:**
 - Parameters should be grouped by their mutability (from least to most mutable) as shown in the example above.
 - If at all possible, avoid exiting methods from their middles.  A well written method should only exit from the same general point: its end.  
-- Avoid large methods. As a method’s body approaches 20 to 30 lines of code, look for blocks that could be split into their own methods and possibly shared by other methods.
-- If you find yourself using the same block of code more than once, it’s a good candidate for a separate method.
+- Avoid large methods. As a method's body approaches 20 to 30 lines of code, look for blocks that could be split into their own methods and possibly shared by other methods.
+- If you find yourself using the same block of code more than once, it's a good candidate for a separate method.
 - Group like methods within a class together into a region and order them by frequency of use (i.e. more frequently called methods should be near the top of their regions.
 
 
@@ -152,7 +151,7 @@ Event handlers should be declared using the following format: `ObjectName_EventN
 
 
 **Example:** 
-- `private HelpButton_Click(object sender, EventArgs e)`
+- `private HelpButton_Click(Object sender, EventArgs e)`
 
 
 ## Error Handling
@@ -171,10 +170,10 @@ Use exceptions *only* for exceptional cases, do *not* rely on them for routine p
   - `InvalidOperationException`: Used when a method call is invalid for the current state of an object. 
     - **Example:** `TotalCost` cannot be set if the cost should be calculated. If the property is set and it fails this rule, an `InvalidOperationException` is thrown. 
   - `NotSupportedException`: Used when a method call is invalid for the class. 
-    - **Example:** `Quantity`, a `virtual` read/write property, is overridden by a derived class. In the derived class, the property is read-only. If the property is set, a `NotSupportedException` is thrown. 
+    - **Example:** `Quantity`, a `virtual` read/write property, is overridden by a derived class. In the derived class, the property is read-only; the implementation of the setter throws a `NotSupportedException`. 
   - `NotImplementedException`: Used when a method is not implemented for the current class. 
     - **Example:** A interface method is stubbed in and not yet implemented. This method should throw a `NotImplementedException`.
-- Derive your own exception classes for a programmatic scenarios. 
+- Derive your own exception classes for programmatic scenarios. 
   - All new derived exceptions should be based upon the core `Exception` class.
   - **Example:** `DeletedByAnotherUserException : Exception`. Thrown to indicate a record being modified has been deleted by another user.
 - Rethrow caught exceptions correctly.  
@@ -187,8 +186,7 @@ Use exceptions *only* for exceptional cases, do *not* rely on them for routine p
       throw ex; // Incorrect - we lose the call stack of the exception. 
   }  
   ```
-  We log all unhandled exceptions in our applications, but may sometimes throw them again to let the higher level systems determine 
-  how to proceed. The problem comes in with the `throw`; it works much better to do this: 
+  The problem is with the `throw`; the following is more appropriate: 
   ```csharp
   catch(Exception ex)
   {

@@ -34,22 +34,22 @@ class Purchasing
 **Guidelines:**
 - Be consistent about the layout of all classes within each project.
 - Omit regions if their associated class elements are not needed.
-- The `Designer Generated Code` region created by Visual Studio’s Visual Designer should *never* be modified by hand. 
+- The `Designer Generated Code` region created by Visual Studio's Visual Designer should *never* be modified by hand. 
   - Many of these files are generated with T4 Text Templates, which should be modified instead.
 
 
 ## Indicating Scope
 
-Indicate scope when accessing all static and non-static class members. This provides a unambiguous indication of the 
-intended use of the member. Intellisense in Visual Studio is automatically invoked when using this practice, providing a 
-list of all available class members. This helps prevent unnecessary typing and reduces the risk of typographic errors.
+Developers should be able to infer the scope simply by following the naming convention.  In the event of a identifier 
+collision, consider choosing a different name for the conflicting identifier.  If the identifier cannot be changed, 
+it must be fully-qualified.  It is advisable to insert a comment explaining the reasoning behind the decision. 
 
 **Example:**
 
 ``` csharp
-String connectionString = DataAccess.DefaultConnectionString;
-Single amount = this.CurrentAmount;
-_discountedAmount = this.CalculateDiscountedAmount(amount, this.PurchaseMethod);        
+PurchaseMethod purchaseMethod = Order.GetPurchaseMethod(InvoiceID);
+Decimal discountedAmount = CalculateDiscountedAmount(_currentAmount, purchaseMethod);
+_discountedAmount = discountedAmount;
 ````
 
 **Guidelines:**
@@ -67,20 +67,17 @@ a selected block of code.
 **Example:**
 
 ``` csharp
-Single CalculateDiscountedAmount(Single amount, PurchaseMethod purchaseMethod)
+Decimal CalculateDiscountedAmount(Decimal amount, PurchaseMethod purchaseMethod)
 {
-    // Calculate the discount based on the purchase method
-    Single discount = 0.0f;
+    Decimal discount = 0.0f;
     switch(purchaseMethod)
     {
         case PurchaseMethod.Cash:
-            // Calculate the cash discount
             discount = CalculateCashDiscount(amount);
-            Trace.Writeline("Cash discount of {0} applied.", discount);
+            Trace.WriteLine("Cash discount of {0} applied.", discount);
             break;
 
         case PurchaseMethod.CreditCard:
-            // Calculate the credit card discount
             discount = CalculateCreditCardDiscount(amount);
             Trace.WriteLine("Credit card discount of {0} applied.", discount);
             break;
@@ -91,12 +88,15 @@ Single CalculateDiscountedAmount(Single amount, PurchaseMethod purchaseMethod)
             break;
     }
 
-    // Compute the discounted amount, making sure not to give money away
-    Single discountedAmount = (amount – discount);
+    Decimal discountedAmount = (amount - discount);
+
+    // A negative amount indicates a discount greater than the normal amount.
+    // Ensure that it is reset to 0 to avoid giving money away.
     if(discountedAmount < 0.0f)
     {
         discountedAmount = 0.0f;
     }
+
     LogManager.Publish(discountedAmount.ToString());
 
     // Return the discounted amount
@@ -121,11 +121,11 @@ debugging and code reviews. The indentation example above shows an example of th
 
 Under *no* circumstances should a single statement wrap across multiple lines.
 
-Individual lines of code should (but are not required to) fit within visible area of the screen using the default 
-configuration and layout of Visual Studio.  Instead, long statements should be broken into multiple statements.
-This improves readability and minimizes the chance that something will be overlooked.
+Individual lines of code should (but are not required to) fit within the visible area of the screen using the 
+default configuration and layout of Visual Studio.  Instead, long statements should be broken into multiple 
+statements.  This improves readability and minimizes the chance that something will be overlooked.
 
-Comments are not subject to this rule, and can be span multiple lines.  Care should be taken to ensure 
+Comments are not subject to this rule, and can span multiple lines.  Care should be taken to ensure 
 readability and proper representation of the scope of the information in the broken lines.
 
 **Example:**
@@ -133,7 +133,7 @@ readability and proper representation of the scope of the information in the bro
 ``` csharp
 String Win32FunctionWrapper(Int32 arg1, String arg2, Boolean arg3)
 {
-    // Perform a PInvoke call to a win32 function, providing default values for obscure parameters,
+    // Perform a PInvoke call to a win32 function, providing default values for obscure parameters
     // to hide the complexity from the caller
     if(Win32.InternalSystemCall(null, arg1, arg2, arg3, null))
     {
