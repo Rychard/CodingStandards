@@ -95,7 +95,7 @@ Variables, fields, and parameters should be declared using the following templat
 
 **Examples:** 
 - `Int32 lowestCommonDenominator = 10;`
-- `Single firstRedBallPrice = 25.0f;`
+- `Decimal firstRedBallPrice = 25.0m;`
 
 **Guidelines:**
 - Use Camel casing when naming variables, fields, and parameters.
@@ -137,7 +137,7 @@ public Decimal TotalPrice
 Methods should be named using the following format: Verb + Adjective(s) + Noun + Qualifier(s)
 
 **Example:**
-- `private IEnumerable<Can> FindRedCansByPrice(Single price, ref Int32 canListToPopulate)`
+- `private IEnumerable<Can> FindRedCansByPrice(Decimal price, ref Int32 canListToPopulate)`
 
 **Guidelines:**
 - Parameters should be grouped by their mutability (from least to most mutable) as shown in the example above.

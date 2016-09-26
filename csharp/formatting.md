@@ -67,20 +67,17 @@ a selected block of code.
 **Example:**
 
 ``` csharp
-Single CalculateDiscountedAmount(Single amount, PurchaseMethod purchaseMethod)
+Decimal CalculateDiscountedAmount(Decimal amount, PurchaseMethod purchaseMethod)
 {
-    // Calculate the discount based on the purchase method
-    Single discount = 0.0f;
+    Decimal discount = 0.0f;
     switch(purchaseMethod)
     {
         case PurchaseMethod.Cash:
-            // Calculate the cash discount
             discount = CalculateCashDiscount(amount);
-            Trace.Writeline("Cash discount of {0} applied.", discount);
+            Trace.WriteLine("Cash discount of {0} applied.", discount);
             break;
 
         case PurchaseMethod.CreditCard:
-            // Calculate the credit card discount
             discount = CalculateCreditCardDiscount(amount);
             Trace.WriteLine("Credit card discount of {0} applied.", discount);
             break;
@@ -91,12 +88,15 @@ Single CalculateDiscountedAmount(Single amount, PurchaseMethod purchaseMethod)
             break;
     }
 
-    // Compute the discounted amount, making sure not to give money away
-    Single discountedAmount = (amount – discount);
+    Decimal discountedAmount = (amount - discount);
+
+    // A negative amount indicates a discount greater than the normal amount.
+    // Ensure that it is reset to 0 to avoid giving money away.
     if(discountedAmount < 0.0f)
     {
         discountedAmount = 0.0f;
     }
+
     LogManager.Publish(discountedAmount.ToString());
 
     // Return the discounted amount
