@@ -25,14 +25,13 @@ Follow the standard Naming Guidelines set by the .NET framework team by using on
 | Method Parameters | Camel | `SetFilter(String filterValue)`
 | Local Variables | Camel | `recordCount` |
 
-**: Enumerations decorated with `[Flags]` should have plural identifiers, undecorated enumerations should use singular identifiers.asdf*
+**: Enumerations decorated with `[Flags]` should have plural identifiers, undecorated enumerations should use singular identifiers.*
 
 Guidelines:
 
 - Upper casing is used only for two-letter acronyms, such as `UI`.
   - Note that `Id` is an abbreviation, and should follow Pascal casing. 
   - Note that three-letter acronyms (ex. `URL`, `WPF`, `GUI`) should *not* use Upper (Use `Url`, `Wpf`, and `Gui`, respectively)
-- Enumerations decorated with `[Flags]` should have plural identifiers, undecorated enumerations should use singular identifiers. 
 - The Resharper plugin for Visual Studio can be configured to enforce these naming conventions.
 
 
